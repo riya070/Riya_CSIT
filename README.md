@@ -1,2 +1,2 @@
 # Riya_CSIT
-This repository contains all internship assignments.
+This repository will contain all internship assignments.
