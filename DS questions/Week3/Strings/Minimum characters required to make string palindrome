@@ -1,0 +1,24 @@
+class Solution {
+    public static int minChar(String str) {
+       //Write your code here
+        int n=str.length();
+        int left=0,right=n-1;
+        int ans=0;
+        while(left<right){
+            if(str.charAt(left)==str.charAt(right)){
+                left++;
+                right--;
+            }
+            else{
+                left=0;
+                ans=n-right;
+                while(str.charAt(left)==str.charAt(right)){
+                    left++;
+                    ans--;
+                }
+                right--;
+            }
+        }
+        return ans;
+    }
+}
