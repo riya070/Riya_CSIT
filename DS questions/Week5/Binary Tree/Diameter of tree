@@ -1,0 +1,21 @@
+class Solution {
+    
+    int maxAns = 0;
+    public int diameterOfBinaryTree(TreeNode root) {
+        int len = pathLongest(root,0);
+        return maxAns;        
+    }
+    int pathLongest(TreeNode node, int len){
+        if(node == null)
+            return -1;
+        int left = 0, right = 0;
+        left = 1+pathLongest(node.left, len+1);
+        right = 1+pathLongest(node.right, len+1);
+        
+        int max = left+right;
+        maxAns = Math.max(maxAns, max);
+        
+        
+        return Math.max(left,right);
+    }
+}
