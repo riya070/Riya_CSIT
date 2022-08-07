@@ -1,0 +1,16 @@
+class Solution
+{
+   
+   int ans=-1,k=0;
+   public int kthLargest(Node root,int K)
+   {
+       if(root==null)
+         return ans;
+      kthLargest(root.right,K);
+      k++;
+      if(k==K)
+        ans=root.data;
+      kthLargest(root.left,K);
+      return ans;
+   }
+}
