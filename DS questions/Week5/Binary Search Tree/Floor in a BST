@@ -1,0 +1,26 @@
+public class Solution {
+    public static int floorInBST(TreeNode<Integer> root, int X) {
+
+        if (root == null) {
+            return -1;
+        }
+
+        int leftFloor = floorInBST(root . left, X);
+        int rightFloor = floorInBST(root . right, X);
+        int ans = -1;
+
+        if (leftFloor <= rightFloor && rightFloor <= X) {
+            ans = rightFloor;
+        }
+
+        if (leftFloor > rightFloor && leftFloor <= X) {
+            ans = leftFloor;
+        }
+
+        if (root . data > ans && root . data <= X) {
+            ans = root . data;
+        }
+
+        return ans;
+    }
+}
