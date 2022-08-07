@@ -1,0 +1,34 @@
+class Pair < U, V > {
+  public final U first;
+  public final V second;
+  private Pair(U first, V second) {
+    this.first = first;
+    this.second = second;
+  }
+  public static < U,
+  V > Pair < U,
+  V > of (U a, V b) {
+    return new Pair < > (a, b);
+  }
+}
+
+class Main {
+  public static void topView(Tree head, int dis, int level,
+    Map < Integer, Pair < Integer, Integer >> map) {
+    if (head == null) {
+      return;
+    }
+    if (!map.containsKey(dis) || level < map.get(dis).second) {
+      map.put(dis, Pair.of(head.key, level));
+    }
+    topView(head.left, dis - 1, level + 1, map);
+    topView(head.right, dis + 1, level + 1, map);
+  }
+  public static void topView(Tree head) {
+    Map < Integer, Pair < Integer, Integer >> map = new TreeMap < > ();
+    topView(head, 0, 0, map);
+    for (Pair < Integer, Integer > it: map.values()) {
+      System.out.print(it.first + " ");
+    }
+  }
+}
